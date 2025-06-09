@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:imc_calc/screens/imc_calculator_screen.dart';
+import 'package:imc_calc/views/imc_calculator_screen.dart';
+import 'package:imc_calc/views/login_screen.dart';
+import 'package:imc_calc/views/register_screen.dart';
 
-void main() {
+void main() async {
   runApp(const MainApp());
 }
 
@@ -10,9 +12,15 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(body: ImcCalculatorScreen()),
+      initialRoute: '/imc-calculator',
+      theme: ThemeData(fontFamily: 'Poppins', useMaterial3: true),
+      routes: {
+        '/login': (context) => LoginScreen(),
+        '/register': (context) => const RegisterScreen(),
+        '/imc-calculator': (context) => ImcCalculatorScreen(),
+      },
     );
   }
 }
